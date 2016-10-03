@@ -1,0 +1,57 @@
+.btnImage {
+    font-size: 30px;
+    color: grey;
+    float: right;
+    display: block;
+    top: -10px;
+    background: transparent;
+    border: none;
+}
+
+.ContainerEnviar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.principal form .list {
+    background-color: transparent;
+}
+
+.principal form .list .item {
+    margin-bottom: 2px;
+    border: none;
+    border-bottom: 1px solid #dddddd;
+}
+
+.principal form .list ion-checkbox {
+    margin: 0px;
+    color: black;
+}
+
+.principal form .check {
+    width: 49%;
+    display: inline-block;
+}
+
+.u {
+    border: none !important;
+}
+
+.textCol {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.textImg {
+    font-size: 17px;
+    display: inline-block;
+}
+
+#mensaje {
+    text-align: center;
+    font-size: 15px;
+}
+
+div p .icon {
+    color: red;
+}

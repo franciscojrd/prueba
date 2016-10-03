@@ -1,0 +1,17 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar-positive">
+        <a menu-open href="#/app/principal" class="button button-clear button-positive"><span style="color:black; " class="ion-chevron-left animated zoomIn"></span> Principal</a>
+        <h1 class="title"> Usuario</h1>
+    </ion-header-bar>
+    <ion-content class="has-subheader padding" >
+        <div class="resetPadding ">
+                <p><strong>Nombre</strong> {{Usuario.name}}</p>
+                 <p><strong>Email</strong> {{Usuario.email}}</p>
+                 <p><strong>Nacionalidad</strong> {{Usuario.nacionalidad}}</p>
+                  <p><strong>Departamento</strong> {{Usuario.departamento}}</p>
+                   <p><strong>Municipio</strong> {{Usuario.city}}</p>
+                    <p><strong>Avatar</strong></p>
+                    <img class="" src="{{Usuario.avatar}}" width="50%" height="100">
+        </div>
+    </ion-content>
+</ion-view>

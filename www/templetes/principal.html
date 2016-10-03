@@ -1,0 +1,64 @@
+<ion-view>
+    <ion-header-bar class="bar-positive">
+        <h2 class="title ">Registro De Usuario</h2>
+    </ion-header-bar>
+    <ion-content class="padding principal has-header" id="frmRegistro" ng-controller="CtrlUbi">
+        <p id="mensaje"></p>
+        <form name="FormularioRegistro" ng-model="formularioReg" class="frmReg">
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{'has-error': FormularioRegistro.nombres.$invalid, 'hass-success':FormularioRegistro.nombres.$valid}">
+                    <i class="icon ion-android-person placeholder-icon"></i>
+                    <input type="text" ng-model="Usuario.name" name="nombres" placeholder="Nombre y apellido" required>
+                    <div ng-show="FormularioRegistro.nombres.$dirty">
+                        <p class="error " ng-show="FormularioRegistro.nombres.$error.required"><i class="icon ion-alert-circled "></i> Requerido </p>
+                    </div>
+                </label>
+                <label class="item item-input" ng-class="{'has-error': FormularioRegistro.email.$invalid, 'hass-success':FormularioRegistro.email.$valid}">
+                    <i class="icon ion-android-mail placeholder-icon"></i>
+                    <input type="email" ng-model="Usuario.email" placeholder="Email" name="email" ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" required>
+                    <div ng-show="FormularioRegistro.email.$dirty">
+                        <p class="error " ng-show="FormularioRegistro.email.$error.pattern"><i class="icon ion-alert-circled "></i> E-mail invalido</p>
+                        <p class="error " ng-show="FormularioRegistro.email.$error.required"><i class="icon ion-alert-circled "></i> Requerido</p>
+                    </div>
+                </label>
+                <p class="textCol">Naciste en colombia?</p>
+                <ion-checkbox class="check u" id="checksi" ng-model="filter.si" ng-disabled="filter.no" ng-init='filter.si=true'>Si</ion-checkbox>
+                <ion-checkbox class="check u" id="checkno" ng-model="filter.no" ng-disabled="filter.si">No</ion-checkbox>
+                <div class="list" ng-hide="!filter.si" ng-controller="AppCtrl">
+                    <label class="item item-input item-select u">
+                        <div class="input-label">
+                            Departamento
+                        </div>
+                        <select ng-model="Usuario.departamento" ng-options="departamento for (departamento, municipios) in ubicacion" required>
+                            <option ng-value="">--</option>
+                        </select>
+                    </label>
+                    <label class="item item-input item-select ">
+                        <div class="input-label">
+                            Municipio
+                        </div>
+                        <select ng-model="Usuario.municipio" ng-disabled="!Usuario.departamento" ng-options="municipio for municipio in Usuario.departamento" required>
+                            <option ng-value="">--</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="" ng-controller="camaraCtrl">
+                    <p class="textImg">Agregar imagen</p>
+                    <button class="button  btnImage" ng-click="takePhoto()"><span class="ion-camera"></span></button>
+                    <button class="button  btnImage" ng-click="choosePhoto()"><span class="ion-images"></span></button>
+                    <center>
+                        <img ng-model="Usuario.imagen" ng-show="imgURL !== undefined" ng-src="{{imgURL}}" style="text-align: center">
+                        </center>
+                </div>
+                <div class="ContainerEnviar">
+                    <button ng-disabled="!Usuario.name || !Usuario.email " class="button button-positive button-block" ng-click="showConfirmReg()">Enviar</button>
+                </div>
+            </div>
+        </form>
+        <script id="templates/registro.html" type="text/ng-template">
+            <span>Registrando...</span>
+            <br />
+            <ion-spinner icon="dots" class="spinner-energized"></ion-spinner>
+        </script>
+    </ion-content>
+</ion-view>
