@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
     .service('ionicPopup', function() { /* ... */ })
     .service('PersonService', function() { /* ... */ })
+    .service('cordovaCamera', function(){})
 
 .controller('registroCtrl', function($scope, $http, $q, Users, $ionicLoading, $ionicPopup) {
 
@@ -119,45 +120,3 @@ angular.module('starter.controllers', [])
             }
         }
     })
-    .controller("camaraCtrl", function($scope, $cordovaCamera) {
-
-        $scope.takePhoto = function() {
-            var options = {
-                quality: 75,
-                destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 300,
-                targetHeight: 300,
-                popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false
-            };
-
-            $cordovaCamera.getPicture(options).then(function(imageData) {
-                $scope.imgURL = "data:image/jpeg;base64," + imageData;
-            }, function(err) {
-            });
-        }
-
-        $scope.choosePhoto = function() {
-            var options = {
-                quality: 75,
-                destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 300,
-                targetHeight: 300,
-                popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false
-            };
-
-            $cordovaCamera.getPicture(options).then(function(imageData) {
-                $scope.imgURL = "data:image/jpeg;base64," + imageData;
-            }, function(err) {
-            });
-        }
-
-
-    });
